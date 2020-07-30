@@ -37,5 +37,23 @@ return [
         "Настольные игры",
         "Компьютерные игры",
         "Готовка"
+    ],
+    "skills" => [
+        [
+            "skill" => "PHP",
+            "level" => 45
+        ],
+        [
+            "skill" => "C#",
+            "level" => 40
+        ],
+        [
+            "skill" => "CSS/HTML",
+            "level" => 12
+        ],
+        [
+            "skill" => "Photoshop",
+            "level" => 10
+        ]
     ]
 ];

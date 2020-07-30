@@ -4,6 +4,7 @@
     $educationData = $data["education"];
     $languagesData = $data["languages"];
     $interestsData = $data["interests"];
+    $skillsData = $data["skills"];
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +53,7 @@
                 </ul>
             </div><!--//contact-container-->
             <div class="education-container container-block">
-                <h2 class="container-block-title">Education</h2>
+                <h2 class="container-block-title">Образование</h2>
                 <? foreach ($educationData as $item): ?>
                 <div class="item">
                     <h4 class="degree"><? echo $item["faculty"] ?></h4>
@@ -63,7 +64,7 @@
             </div><!--//education-container-->
             
             <div class="languages-container container-block">
-                <h2 class="container-block-title">Languages</h2>
+                <h2 class="container-block-title">Языки</h2>
                 <ul class="list-unstyled interests-list">
                     <? foreach ($languagesData as $language): ?>
                     <li><? echo $language["language"] ?> <span class="lang-desc">(<? echo $language["level"] ?>)</span></li>
@@ -72,7 +73,7 @@
             </div><!--//interests-->
             
             <div class="interests-container container-block">
-                <h2 class="container-block-title">Interests</h2>
+                <h2 class="container-block-title">Интересы</h2>
                 <ul class="list-unstyled interests-list">
                     <? foreach ($interestsData as $interest): ?>
                     <li><? echo $interest ?></li>
@@ -162,56 +163,18 @@
             </section><!--//section-->
             
             <section class="skills-section section">
-                <h2 class="section-title"><i class="fa fa-rocket"></i>Skills &amp; Proficiency</h2>
-                <div class="skillset">        
+                <h2 class="section-title"><i class="fa fa-rocket"></i>Навыки и Умения</h2>
+                <div class="skillset">
+                    <? foreach ($skillsData as $skill): ?>
                     <div class="item">
-                        <h3 class="level-title">Python &amp; Django</h3>
+                        <h3 class="level-title"><? echo $skill["skill"] ?></h3>
                         <div class="level-bar">
-                            <div class="level-bar-inner" data-level="98%">
+                            <div class="level-bar-inner" data-level="<? echo $skill["level"] ?>%">
                             </div>                                      
                         </div><!--//level-bar-->                                 
                     </div><!--//item-->
-                    
-                    <div class="item">
-                        <h3 class="level-title">Javascript &amp; jQuery</h3>
-                        <div class="level-bar">
-                            <div class="level-bar-inner" data-level="98%">
-                            </div>                                      
-                        </div><!--//level-bar-->                                 
-                    </div><!--//item-->
-                    
-                    <div class="item">
-                        <h3 class="level-title">Angular</h3>
-                        <div class="level-bar">
-                            <div class="level-bar-inner" data-level="98%">
-                            </div>                                      
-                        </div><!--//level-bar-->                                 
-                    </div><!--//item-->
-                    
-                    <div class="item">
-                        <h3 class="level-title">HTML5 &amp; CSS</h3>
-                        <div class="level-bar">
-                            <div class="level-bar-inner" data-level="95%">
-                            </div>                                      
-                        </div><!--//level-bar-->                                 
-                    </div><!--//item-->
-                    
-                    <div class="item">
-                        <h3 class="level-title">Ruby on Rails</h3>
-                        <div class="level-bar">
-                            <div class="level-bar-inner" data-level="85%">
-                            </div>                                      
-                        </div><!--//level-bar-->                                 
-                    </div><!--//item-->
-                    
-                    <div class="item">
-                        <h3 class="level-title">Sketch &amp; Photoshop</h3>
-                        <div class="level-bar">
-                            <div class="level-bar-inner" data-level="60%">
-                            </div>                                      
-                        </div><!--//level-bar-->                                 
-                    </div><!--//item-->
-                    
+                    <? endforeach; ?>
+
                 </div>  
             </section><!--//skills-section-->
             
