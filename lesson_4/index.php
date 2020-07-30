@@ -27,3 +27,12 @@
     <p>Возраст: <input type="number" name="age"></p>
     <p><input type="submit" value="Подтвердить"></p>
 </form>
+
+<br>
+
+<h1>Доп. Задание</h1>
+<h2>Расчитать количество полных лет</h2>
+<form action="content.php" method="POST">
+    <p><input type="date" name="birthdate"></p>
+    <p><input type="submit" value="Подтвердить"></p>
+</form>
