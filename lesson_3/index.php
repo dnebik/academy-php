@@ -1,3 +1,11 @@
+<?php
+    $data = require_once ("data.php");
+    $aboutData = $data["about"];
+    $educationData = $data["education"];
+    $languagesData = $data["languages"];
+    $interestsData = $data["interests"];
+?>
+
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
@@ -31,49 +39,44 @@
         <div class="sidebar-wrapper">
             <div class="profile-container">
                 <img class="profile" src="assets/images/profile.png" alt="" />
-                <h1 class="name">Alan Doe</h1>
-                <h3 class="tagline">Full Stack Developer</h3>
+                <h1 class="name"><? echo $aboutData["name"] ?></h1>
+                <h3 class="tagline"><? echo $aboutData["post"] ?></h3>
             </div><!--//profile-container-->
             
             <div class="contact-container container-block">
                 <ul class="list-unstyled contact-list">
-                    <li class="email"><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com">alan.doe@website.com</a></li>
-                    <li class="phone"><i class="fa fa-phone"></i><a href="tel:0123 456 789">0123 456 789</a></li>
-                    <li class="website"><i class="fa fa-globe"></i><a href="http://themes.3rdwavemedia.com/website-templates/free-responsive-website-template-for-developers/" target="_blank">portfoliosite.com</a></li>
-                    <li class="linkedin"><i class="fa fa-linkedin"></i><a href="#" target="_blank">linkedin.com/in/alandoe</a></li>
-                    <li class="github"><i class="fa fa-github"></i><a href="#" target="_blank">github.com/username</a></li>
-                    <li class="twitter"><i class="fa fa-twitter"></i><a href="https://twitter.com/3rdwave_themes" target="_blank">@twittername</a></li>
+                    <li class="email"><i class="fa fa-envelope"></i><a href="http://<? echo $aboutData["email"] ?>"><? echo $aboutData["email"] ?></a></li>
+                    <li class="phone"><i class="fa fa-phone"></i><a href="tel:<? echo $aboutData["phone"]?>"><? echo $aboutData["phone"] ?></a></li>
+                    <li class="website"><i class="fa fa-globe"></i><a href="https://<? echo $aboutData["social"] ?>" target="_blank"><? echo $aboutData["social"] ?></a></li>
+                    <li class="github"><i class="fa fa-github"></i><a href="https://<? echo $aboutData["git"] ?>" target="_blank"><? echo $aboutData["git"] ?></a></li>
                 </ul>
             </div><!--//contact-container-->
             <div class="education-container container-block">
                 <h2 class="container-block-title">Education</h2>
+                <? foreach ($educationData as $item): ?>
                 <div class="item">
-                    <h4 class="degree">MSc in Computer Science</h4>
-                    <h5 class="meta">University of London</h5>
-                    <div class="time">2011 - 2012</div>
+                    <h4 class="degree"><? echo $item["faculty"] ?></h4>
+                    <h5 class="meta"><? echo $item["university"] ?></h5>
+                    <div class="time"><? echo $item["yearStart"] ?> - <? echo $item["yearEnd"] ?></div>
                 </div><!--//item-->
-                <div class="item">
-                    <h4 class="degree">BSc in Applied Mathematics</h4>
-                    <h5 class="meta">Bristol University</h5>
-                    <div class="time">2007 - 2011</div>
-                </div><!--//item-->
+                <? endforeach ?>
             </div><!--//education-container-->
             
             <div class="languages-container container-block">
                 <h2 class="container-block-title">Languages</h2>
                 <ul class="list-unstyled interests-list">
-                    <li>English <span class="lang-desc">(Native)</span></li>
-                    <li>French <span class="lang-desc">(Professional)</span></li>
-                    <li>Spanish <span class="lang-desc">(Professional)</span></li>
+                    <? foreach ($languagesData as $language): ?>
+                    <li><? echo $language["language"] ?> <span class="lang-desc">(<? echo $language["level"] ?>)</span></li>
+                    <? endforeach; ?>
                 </ul>
             </div><!--//interests-->
             
             <div class="interests-container container-block">
                 <h2 class="container-block-title">Interests</h2>
                 <ul class="list-unstyled interests-list">
-                    <li>Climbing</li>
-                    <li>Snowboarding</li>
-                    <li>Cooking</li>
+                    <? foreach ($interestsData as $interest): ?>
+                    <li><? echo $interest ?></li>
+                    <? endforeach; ?>
                 </ul>
             </div><!--//interests-->
             
