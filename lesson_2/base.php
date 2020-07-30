@@ -38,7 +38,7 @@ for ($i = 0;;$i++){
 }
 
 ohGodImUseGoTo:
-    echo "Цикл завершон<br><br>";
+    echo "Цикл завершен<br><br>";
 
 echo "Работа функции: " . composition(5,5); //пример вызова функции
 
