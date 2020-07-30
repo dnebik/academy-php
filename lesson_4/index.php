@@ -10,6 +10,8 @@
     }
     echo "<br>";
 ?>
+
+<!--Форма для GET-->
 <h1>GET</h1>
 <form action="content.php" method="GET">
     <p>Имя: <input type="text" name="firstname"></p>
@@ -20,6 +22,7 @@
 
 <br>
 
+<!--Форма для POST-->
 <h1>POST</h1>
 <form action="content.php" method="POST">
     <p>Имя: <input type="text" name="firstname"></p>
@@ -30,6 +33,7 @@
 
 <br>
 
+<!--Дополнительное задание-->
 <h1>Доп. Задание</h1>
 <h2>Расчитать количество полных лет</h2>
 <form action="content.php" method="POST">
