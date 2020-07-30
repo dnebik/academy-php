@@ -17,13 +17,9 @@ function PrimeNumber($number){
 
 //Функция проверки на високосный год
 function bissextile($year){
-    if ($year % 400 == 0) //если кратен 400 - високосный
+    if (($year % 400 == 0) || (($year % 100 != 0) && ($year % 4 == 0))){
         return true;
-    elseif ($year % 100 == 0) //если кратен 100 но не кратен 400 - не високосный
-        return false;
-    elseif ($year % 4 == 0) //в остольных случаях если кратен 4 - високосный, иначе - нет
-        return true;
-    else
+    }else
         return false;
 }
 
