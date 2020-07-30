@@ -33,6 +33,6 @@
 <h1>Доп. Задание</h1>
 <h2>Расчитать количество полных лет</h2>
 <form action="content.php" method="POST">
-    <p><input type="date" name="birthdate"></p>
+    <p>Дата рождения: <input type="date" name="birthdate"></p>
     <p><input type="submit" value="Подтвердить"></p>
 </form>
