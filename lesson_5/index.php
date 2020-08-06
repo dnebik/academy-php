@@ -1,17 +1,21 @@
 <?php
 abstract class Product
 {
+    protected static $count;
+
     protected $name;
     protected $price;
     protected $weight;
 
     function __construct(string $name, float $price, float $weight)
     {
+        self::$count++;
         $this->name = $name;
         $this->price = $price;
         $this->weight = $weight;
 
         $this->showImage();
+        $this->getCount();
     }
 
     function info()
@@ -31,6 +35,11 @@ abstract class Product
     function PriceWithVAT()
     {
         return $this->price + ($this->price / 100 * 20) . "<br>";
+    }
+
+    function getCount()
+    {
+        echo "<p>Количество продукции: ". self::$count ."</p>";
     }
 
     abstract protected function showImage();
