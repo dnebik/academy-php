@@ -43,25 +43,25 @@
         <div class="sidebar-wrapper">
             <div class="profile-container">
                 <img class="profile" src="assets/images/profile.png" alt="" />
-                <h1 class="name"><? echo $aboutData["name"] ?></h1>
-                <h3 class="tagline"><? echo $aboutData["post"] ?></h3>
+                <h1 class="name"><?= $aboutData["name"] ?></h1>
+                <h3 class="tagline"><?= $aboutData["post"] ?></h3>
             </div><!--//profile-container-->
             
             <div class="contact-container container-block">
                 <ul class="list-unstyled contact-list">
-                    <li class="email"><i class="fa fa-envelope"></i><a href="http://<? echo $aboutData["email"] ?>"><? echo $aboutData["email"] ?></a></li>
-                    <li class="phone"><i class="fa fa-phone"></i><a href="tel:<? echo $aboutData["phone"]?>"><? echo $aboutData["phone"] ?></a></li>
-                    <li class="website"><i class="fa fa-globe"></i><a href="https://<? echo $aboutData["social"] ?>" target="_blank"><? echo $aboutData["social"] ?></a></li>
-                    <li class="github"><i class="fa fa-github"></i><a href="https://<? echo $aboutData["git"] ?>" target="_blank"><? echo $aboutData["git"] ?></a></li>
+                    <li class="email"><i class="fa fa-envelope"></i><a href="http://<?= $aboutData["email"] ?>"><?= $aboutData["email"] ?></a></li>
+                    <li class="phone"><i class="fa fa-phone"></i><a href="tel:<?= $aboutData["phone"]?>"><?= $aboutData["phone"] ?></a></li>
+                    <li class="website"><i class="fa fa-globe"></i><a href="https://<?= $aboutData["social"] ?>" target="_blank"><?= $aboutData["social"] ?></a></li>
+                    <li class="github"><i class="fa fa-github"></i><a href="https://<?= $aboutData["git"] ?>" target="_blank"><?= $aboutData["git"] ?></a></li>
                 </ul>
             </div><!--//contact-container-->
             <div class="education-container container-block">
                 <h2 class="container-block-title">Образование</h2>
                 <? foreach ($educationData as $item): ?>
                 <div class="item">
-                    <h4 class="degree"><? echo $item["faculty"] ?></h4>
-                    <h5 class="meta"><? echo $item["university"] ?></h5>
-                    <div class="time"><? echo $item["yearStart"] ?> - <? echo $item["yearEnd"] ?></div>
+                    <h4 class="degree"><?= $item["faculty"] ?></h4>
+                    <h5 class="meta"><?= $item["university"] ?></h5>
+                    <div class="time"><?= $item["yearStart"] ?> - <?= $item["yearEnd"] ?></div>
                 </div><!--//item-->
                 <? endforeach ?>
             </div><!--//education-container-->
@@ -70,7 +70,7 @@
                 <h2 class="container-block-title">Языки</h2>
                 <ul class="list-unstyled interests-list">
                     <? foreach ($languagesData as $language): ?>
-                    <li><? echo $language["language"] ?> <span class="lang-desc">(<? echo $language["level"] ?>)</span></li>
+                    <li><?= $language["language"] ?> <span class="lang-desc">(<?= $language["level"] ?>)</span></li>
                     <? endforeach; ?>
                 </ul>
             </div><!--//interests-->
@@ -79,7 +79,7 @@
                 <h2 class="container-block-title">Интересы</h2>
                 <ul class="list-unstyled interests-list">
                     <? foreach ($interestsData as $interest): ?>
-                    <li><? echo $interest ?></li>
+                    <li><?= $interest ?></li>
                     <? endforeach; ?>
                 </ul>
             </div><!--//interests-->
@@ -91,7 +91,7 @@
             <section class="section summary-section">
                 <h2 class="section-title"><i class="fa fa-user"></i>Карьера</h2>
                 <div class="summary">
-                    <? echo $careerData ?>
+                    <?= $careerData ?>
                 </div><!--//summary-->
             </section><!--//section-->
             
@@ -102,13 +102,13 @@
                 <div class="item">
                     <div class="meta">
                         <div class="upper-row">
-                            <h3 class="job-title"><? echo $experience["position"] ?></h3>
-                            <div class="time"><? echo $experience["yearStart"] ?> - <? echo $experience["yearEnd"] ?></div>
+                            <h3 class="job-title"><?= $experience["position"] ?></h3>
+                            <div class="time"><?= $experience["yearStart"] ?> - <?= $experience["yearEnd"] ?></div>
                         </div><!--//upper-row-->
-                        <div class="company"><? echo $experience["place"] ?></div>
+                        <div class="company"><?= $experience["place"] ?></div>
                     </div><!--//meta-->
                     <div class="details">
-                        <? echo $experience["discription"] ?>
+                        <?= $experience["discription"] ?>
                     </div><!--//details-->
                 </div><!--//item-->
                 <? endforeach; ?>
@@ -117,7 +117,7 @@
             
             <section class="section projects-section">
                 <h2 class="section-title"><i class="fa fa-archive"></i>Проекты</h2>
-                    <? echo $projectData ?>
+                    <?= $projectData ?>
                 </div><!--//item-->
             </section><!--//section-->
             
@@ -126,9 +126,9 @@
                 <div class="skillset">
                     <? foreach ($skillsData as $skill): ?>
                     <div class="item">
-                        <h3 class="level-title"><? echo $skill["skill"] ?></h3>
+                        <h3 class="level-title"><?= $skill["skill"] ?></h3>
                         <div class="level-bar">
-                            <div class="level-bar-inner" data-level="<? echo $skill["level"] ?>%">
+                            <div class="level-bar-inner" data-level="<?= $skill["level"] ?>%">
                             </div>                                      
                         </div><!--//level-bar-->                                 
                     </div><!--//item-->
