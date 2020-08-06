@@ -63,7 +63,7 @@ class Candy extends Product
 }
 
 $candy = new Candy("Восторг", 58.99, 10);
-$chocolate = new Chocolate("Радость", 120, 100);
+$chocolate = new Chocolate("Радость", 120, 100, 1560);
 
 $candy->showImage();
 $chocolate->showImage();
