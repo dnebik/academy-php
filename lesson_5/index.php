@@ -1,17 +1,25 @@
 <?php
-class Product{
-    public $name;
-    public $price;
-    public $weight;
+abstract class Product
+{
+    protected static $count;
 
-    function __construct($name, $price, $weight)
+    protected $name;
+    protected $price;
+    protected $weight;
+
+    function __construct(string $name, float $price, float $weight)
     {
+        self::$count++;
         $this->name = $name;
         $this->price = $price;
         $this->weight = $weight;
+
+        $this->showImage();
+        $this->getCount();
     }
 
-    function info(){
+    function info()
+    {
         return [
             "name"=>$this->name,
             "weight"=>$this->weight,
@@ -19,34 +27,48 @@ class Product{
         ];
     }
 
-    function Price(){
+    function Price()
+    {
         return $this->price . "<br>";
     }
 
-    function PriceWithVAT(){
+    function PriceWithVAT()
+    {
         return $this->price + ($this->price / 100 * 20) . "<br>";
     }
+
+    function getCount()
+    {
+        echo "<p>Количество продукции: ". self::$count ."</p>";
+    }
+
+    abstract protected function showImage();
 }
 
-function printInfo(Product $product){
-    $info = $product->info();
-    foreach ($info as $key=>$stat){
-        echo "$key: $stat <br>";
+class Chocolate extends Product
+{
+    protected $calories;
+
+    public function __construct(string $name, float $price, float $weight, int $calories)
+    {
+        $this->calories = $calories;
+        parent::__construct($name, $price, $weight);
+    }
+
+    protected function showImage()
+    {
+        echo "<img src='Chocolate.png' width='200' height='200'>";
     }
 }
 
-$product_1 = new Product("auto", 1000000, 1600);
-$product_2 = new Product("brick", 50, 5);
-$product_3 = new Product("smartphone", 25000, 0.4);
+class Candy extends Product
+{
 
-printInfo($product_1);
-echo "Цена без НДС:" . $product_1->Price();
-echo "Цена с НДС" . $product_1->PriceWithVAT() . "<br>";
+    protected function showImage()
+    {
+        echo "<img src='Sweets_Candy.jpg' width='200' height='200'>";
+    }
+}
 
-printInfo($product_2);
-echo "Цена без НДС:" . $product_2->Price();
-echo "Цена с НДС" . $product_2->PriceWithVAT() . "<br>";
-
-printInfo($product_3);
-echo "Цена без НДС:" . $product_3->Price();
-echo "Цена с НДС" . $product_3->PriceWithVAT() . "<br>";
+$candy = new Candy("Восторг", 58.99, 10);
+$chocolate = new Chocolate("Радость", 120, 100, 1560);
