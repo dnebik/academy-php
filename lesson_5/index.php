@@ -26,7 +26,7 @@ abstract class Product implements iCount, iPrice, iInfo
     protected $price;
     protected $weight;
 
-    function __construct(string $name, float $price, float $weight)
+    public function __construct(string $name, float $price, float $weight)
     {
         self::$count++;
         $this->name = $name;
@@ -37,41 +37,41 @@ abstract class Product implements iCount, iPrice, iInfo
         $this->getCount();
     }
 
-    function __get($name)
+    public function __get($name)
     {
         echo "Переменная '$name' вне доступа.";
     }
 
-    function __set($name, $value)
+    public function __set($name, $value)
     {
         echo "Невозможно присвоить '$value' преременной '$name', так как она находится вне доступа.";
     }
 
-    function info()
+    public function info()
     {
         return [
-            "name"=>$this->name,
-            "weight"=>$this->weight,
-            "price"=>$this->price
+            "name" => $this->name,
+            "weight" => $this->weight,
+            "price" => $this->price
         ];
     }
 
-    function price()
+    public function price()
     {
         return $this->price . "<br>";
     }
 
-    function priceWithVAT()
+    public function priceWithVAT()
     {
         return $this->price + ($this->price / 100 * 20) . "<br>";
     }
 
-    function getCount()
+    public function getCount()
     {
-        echo "<p>Количество продукции: ". self::$count ."</p>";
+        echo "<p>Количество продукции: " . self::$count . "</p>";
     }
 
-    static function showCompanyInfo()
+    public static function showCompanyInfo()
     {
         echo "<p>Компания: " . self::$companyName . "</p><p>Год основания: " . self::YEAR_START . "</p>";
     }
