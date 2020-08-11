@@ -55,6 +55,7 @@ if ($_POST["login"]) {
                             value="<? if ($_POST["password"]) echo $_POST["password"] ?>"
                             alt="Password" required></p>
         <p><input type="submit" value="Register"></p>
+        <p><a href="login.php">I'am already have account</a></p>
     </form>
 </div>
 </body>

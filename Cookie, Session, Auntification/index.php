@@ -2,6 +2,13 @@
 
 session_start();
 
+if ($_POST["exit"])
+{
+    session_destroy();
+    header("Location: templates/login.php");
+    die();
+}
+
 if (!$_SESSION["login"])
 {
     header("Location: templates/login.php");
@@ -34,6 +41,10 @@ if (!$_SESSION["verification"]){
 <body style="text-align: center">
 
 <h1>Привет</h1>
+
+<form method="post">
+    <input type="submit" name="exit" value="Выйти">
+</form>
 
 </body>
 

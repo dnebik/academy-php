@@ -2,6 +2,8 @@
 
 session_start();
 
+$connection = require_once("../database.php");
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -11,10 +13,21 @@ if ($_SESSION["verification"])
     die();
 }
 
+if ($_SESSION["login"] && !$_SESSION["email"])
+{
+    $query = "SELECT email FROM logintraning.users WHERE login = ?";
+    $data = $connection->prepare($query);
+    $data->execute([$_SESSION["login"]]);
+    $data = $data->fetch(PDO::FETCH_ASSOC);
+
+    if ($data["login"])
+    {
+        $_SESSION["email"] = $data["login"];
+    }
+}
+
 if ($_SESSION["email"])
 {
-    $connection = require_once("database.php");
-
     $query = "SELECT id, login, verification FROM logintraning.users WHERE login = ?";
     $data = $connection->prepare($query);
     $data->execute([$_SESSION["login"]]);
@@ -29,10 +42,10 @@ if ($_SESSION["email"])
 
 if($_GET["verification"])
 {
-    $connection = require_once("../database.php");
 
-    $sql = "UPDATE logintraning.users SET verification = 1 WHERE login = ?";
-    $some = $connection->prepare($sql)->execute([$_GET["verification"]]);
+    $query = "UPDATE logintraning.users SET verification = 1 WHERE login = ?";
+    $command = $connection->prepare($query);
+    $command->execute([$_SESSION["login"]]);
     $_SESSION["verification"] = 1;
 
     header("Location: ..");
@@ -63,6 +76,7 @@ if((!$_SESSION["post_send"] || $_POST["send"]) && $_SESSION["email"])
     $mail = new PHPMailer(true);
     try{
         //
+        $mail->CharSet = "UTF-8";
         $mail->isSMTP();
         $mail->Host = "smtp.mail.ru";
         $mail->SMTPAuth = true;
