@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION["login"]))
+{
+    die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
