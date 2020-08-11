@@ -11,16 +11,17 @@ if ($_SESSION["login"]) {
 
 if ($_POST["login"]) {
 
-    $coonection = require_once("../database.php");
+    $connection = require_once("../database.php");
 
     $md5_password = md5($_POST["password"]);
     $sql = "INSERT INTO logintraning.users (login, password, email) VALUES (?,?,?)";
-    $some = $coonection->prepare($sql)->execute([$_POST["login"], $md5_password, $_POST["email"]]);
+    $data = $connection->prepare($sql)->execute([$_POST["login"], $md5_password, $_POST["email"]]);
 
-    if (!$some) {
+    if (!$data) {
         array_push($error, "Пользователь с таким именем уже существует");
     }else{
         $_SESSION["login"] = $_POST["login"];
+        $_SESSION["email"] = $_POST["email"];
         $_SESSION["verification"] = false;
         header("Location: verification.php");
     }
@@ -33,7 +34,7 @@ if ($_POST["login"]) {
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Registration</title>
 </head>
 
 <body>
