@@ -2,6 +2,8 @@
 
 session_start();
 
+$db = require_once ("database.php");
+
 if (!$_SESSION["login"]) {
     header("Location: login.php");
     die();
@@ -13,6 +15,20 @@ if ($_POST["exit"]) {
     die();
 }
 
+if ($_POST["confirm"])
+{
+    unset($_POST["confirm"]);
+    foreach ($_POST as $id => $item){
+        if ($item == "true")
+        {
+            $db->prepare("UPDATE security.comments SET moderation = 'ok' WHERE id = ?")->execute([$id]);
+        }
+        elseif ($item == "false")
+        {
+            $db->prepare("UPDATE security.comments SET moderation = 'removed' WHERE id = ?")->execute([$id]);
+        }
+    }
+}
 
 ?>
 
@@ -27,14 +43,13 @@ if ($_POST["exit"]) {
 <hr>
 <form action="" method="post">
     <?
-    $db = require_once("database.php");
     $data = $db->prepare("SELECT * FROM security.comments WHERE moderation = 'new'");
     $data->execute();
     $comments = $data->fetchALL(PDO::FETCH_ASSOC);
 
     foreach ($comments as $item) {
         ?>
-        <select>
+        <select id="<?= $item["id"] ?>" name="<?= $item["id"] ?>">
             <option <?= ($_SESSION["level"] != "Admin") ? "selected" : "" ?> value="miss">Не трогать</option>
             <? if ($_SESSION["level"] == "Admin") { ?>
                 <option selected value="true">Принять</option>
@@ -42,8 +57,8 @@ if ($_POST["exit"]) {
             <option value="false">Отказать</option>
         </select>
         <?
+        echo "<b>{$item["name"]}</b>: {$item["text"]} <br><br>";
     }
-    echo "<b>{$item["name"]}</b>: {$item["text"]}";
     ?>
     <input style="display: block; margin-top: 15px" type="submit" name="confirm" value="Подтвердить">
 </form>
