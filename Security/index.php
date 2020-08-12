@@ -34,7 +34,7 @@ if (isset($_POST["name"])) {
 <hr>
 <h1>Сообщения: </h1>
 <?
-    $data = $db->prepare("SELECT * FROM security.comments WHERE moderation = 'ok' ORDER BY publish_date");
+    $data = $db->prepare("SELECT * FROM security.comments WHERE moderation = 'ok' ORDER BY publish_date DESC ");
     $data->execute();
     $messages = $data->fetchALL(PDO::FETCH_ASSOC);
 
