@@ -8,7 +8,7 @@ class database{
             return self::$link;
         }
         else {
-            $data = parse_ini_file("settings.ini", true);
+            $data = parse_ini_file($_SERVER["DOCUMENT_ROOT"] . "/Files/settings.ini", true);
             $databaseData = $data["database"];
             $dsn = "{$databaseData["driver"]}:host={$databaseData["host"]};port={$databaseData["port"]};dbname={$databaseData["schema"]}";
 
