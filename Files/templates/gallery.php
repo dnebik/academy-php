@@ -1,5 +1,5 @@
 <?php
-require_once ($_SERVER['DOCUMENT_ROOT'] . "/Files/php/.php");
+require_once ($_SERVER['DOCUMENT_ROOT'] . "/Files/php/loadImages.php");
 ?>
 
 <html>
