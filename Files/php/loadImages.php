@@ -53,6 +53,6 @@ if ($_FILES["file"]){
     }
 
     header("Location: " . $_SERVER["HTTP_REFERER"]);
+    die();
 }
-
 ?>
