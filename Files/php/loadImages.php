@@ -18,10 +18,6 @@ if ($_FILES["file"]){
     $fileName = substr($file, 0, strrpos($file, "."));
     $fileName = preg_replace("/[0-9]/", "", $fileName);
 
-    error_log("[extension]: " . $fileExtension);
-    error_log("[filename]: " . $fileName);
-    error_log("[type]: " . $fileType);
-
     if ($fileErrors !== 0){
         array_push($error, "Something wrong.");
     }
@@ -46,8 +42,6 @@ if ($_FILES["file"]){
             mkdir($fileDirNEW);
         }
         move_uploaded_file($tmp, $fileDirNEW . "/" . $fileNameNEW);
-
-        error_log("[maxID]: " . $maxID);
     }else {
         error_log("[errors] " . json_encode($error));
     }
