@@ -24,7 +24,7 @@ if ($_FILES["file"]){
     if ($fileType != "image"){
         array_push($error, "Unknown file type.");
     }
-    if ($size > 2097152){
+    if ($size > 5242880){
         array_push($error, "File size is too large.");
     }
 
