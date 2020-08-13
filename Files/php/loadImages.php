@@ -51,6 +51,8 @@ if ($_FILES["file"]){
     }else {
         error_log("[errors] " . json_encode($error));
     }
+
+    header("Location: " . $_SERVER["HTTP_REFERER"]);
 }
 
 ?>
